@@ -1,0 +1,24 @@
+Package: shlr
+Title: {{ Title }}
+Version: 0.1
+Authors@R: 
+    person(given = "Filip",
+           family = "Wastberg",
+           role = c("cre", "aut"),
+           email = "filip.wastberg@gmail.com")
+Description: This is an API client for retrieving data from the
+    SHL Open API into R.
+License: MIT + file LICENSE
+URL: https://github.com/filipwastberg/shlr
+BugReports: https://github.com/filipwastberg/shlr/issues
+Encoding: UTF-8
+LazyData: true
+Depends: 
+    httr,
+    magrittr
+Imports:
+    purrr,
+    dplyr,
+    stringr,
+    chron
+RoxygenNote: 6.1.1
