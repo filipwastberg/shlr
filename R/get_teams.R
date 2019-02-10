@@ -20,7 +20,7 @@ get_teams <- function(access_token = get_shl_access_token()) {
 
   num_loops <- seq_len(length(res))
 
-  teams <- map_df(num_loops, function(this_row){
+  teams <- purrr::map_df(num_loops, function(this_row){
     this_team <- res[[this_row]]
     list(
       team_code = this_team$team_code,

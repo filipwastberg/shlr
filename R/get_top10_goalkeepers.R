@@ -14,7 +14,7 @@ get_top10_goalkeeper_stats <- function(season = season, team_id = NULL,
                                    access_token = get_shl_access_token()) {
 
   # Search SHL API for top goalkeepers
-  res <- GET(url = str_glue('https://openapi.shl.se/seasons/{season}/statistics/goalkeepers'),
+  res <- GET(url = stringr::str_glue('https://openapi.shl.se/seasons/{season}/statistics/goalkeepers'),
              query = list("teamIds[]" = team_id),
              add_headers(Authorization = paste("Bearer", access_token, sep = " "))) %>%
     content()

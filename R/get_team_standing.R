@@ -13,7 +13,7 @@ get_team_standing <- function(season = season, team_id = NULL, access_token = ge
 
   # Search SHL api for team standing
   res <- GET(url =
-             str_glue('https://openapi.shl.se/seasons/{season}/statistics/teams/standings'),
+             stringr::str_glue('https://openapi.shl.se/seasons/{season}/statistics/teams/standings'),
              query = list("teamIds[]" = team_id),
              add_headers(Authorization = paste("Bearer", access_token, sep = " "))) %>%
     content()

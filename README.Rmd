@@ -1,0 +1,49 @@
+---
+title: "README"
+output: md_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## shlr
+
+This is an API client to retrieve data from the Swedish Hockey League Open API. 
+
+To be able to use it you need to apply for a client id and client secret from http://doc.openapi.shl.se/.
+
+When you have these you can save them as environmentvariables:
+
+```{r eval=FALSE}
+Sys.setenv('SHL_CLIENT_ID' = "xxxxxx")
+Sys.setenv('SHL_CLIENT_SECRET' = "xxxxxxxx")
+```
+
+For example you can get the top 10 players of a team (or the whole league) using `get_top10_player_stats()`. 
+
+```{r}
+library(shlr)
+get_top10_player_stats(season = "2017", team_id = "DIF")
+```
+
+You can aquire the same information but for only goalies with `get_top10_player_stats()`.
+
+You can get all the games for a season with `get_games()`.
+
+```{r}
+get_games(season = "2018")
+```
+
+Active teams and meta information about the teams:
+
+```{r}
+get_teams()
+```
+
+The current standing in SHL:
+
+```{r}
+get_team_standing(season = "2018")
+```
+

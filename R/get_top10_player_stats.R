@@ -15,14 +15,14 @@ get_top10_player_stats <- function(season = season, sort = "assists", team_id = 
                                    access_token = get_shl_access_token()) {
 
   # Search SHL API for top players
-  res <- GET(url = str_glue('https://openapi.shl.se/seasons/{season}/statistics/players'),
+  res <- GET(url = stringr::str_glue('https://openapi.shl.se/seasons/{season}/statistics/players'),
              query = list("sort" = sort, "teamIds[]" = team_id),
              add_headers(Authorization = paste("Bearer", access_token, sep = " "))) %>%
     content()
 
 
   if (!is.null(res$error)) {
-    stop(str_glue('{res$error$message} ({res$error$status})'))
+    stop(stringr::str_glue('{res$error$message} ({res$error$status})'))
   }
 
   num_loops <- seq_len(length(res))

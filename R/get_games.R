@@ -13,7 +13,7 @@ get_games <- function(season = season, team_id = NULL,
                       access_token = get_shl_access_token()) {
 
   # Search SHL API for top players
-  res <- GET(url = str_glue('https://openapi.shl.se/seasons/{season}/games'),
+  res <- GET(url = stringr::str_glue('https://openapi.shl.se/seasons/{season}/games'),
              query = list("teamIds[]" = team_id),
              add_headers(Authorization = paste("Bearer", access_token, sep = " "))) %>%
     content()
@@ -25,10 +25,10 @@ get_games <- function(season = season, team_id = NULL,
 
   num_loops <- seq_len(length(res))
 
-  games <- map_df(num_loops, function(this_row){
+  games <- purrr::map_df(num_loops, function(this_row){
     this_game <- res[[this_row]]
 
-    start_date_time <- str_replace(this_game$start_date_time, "T", " ")
+    start_date_time <- stringr::str_replace(this_game$start_date_time, "T", " ")
 
     list(
       away_team_code = this_game$away_team_code,
@@ -46,8 +46,8 @@ get_games <- function(season = season, team_id = NULL,
       played = this_game$played,
       season = this_game$season,
       series = this_game$series,
-      date = str_sub(start_date_time, 1, 10),
-      start_time = str_sub(start_date_time, 12, 19))
+      date = stringr::str_sub(start_date_time, 1, 10),
+      start_time = stringr::str_sub(start_date_time, 12, 19))
   }) %>%
     dplyr::mutate(date = as.Date(date),
                   start_time = chron::chron(times = start_time))
