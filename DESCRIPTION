@@ -13,12 +13,9 @@ URL: https://github.com/filipwastberg/shlr
 BugReports: https://github.com/filipwastberg/shlr/issues
 Encoding: UTF-8
 LazyData: true
-Depends: 
+Import: 
     httr,
-    magrittr,
     stringr
-Imports:
     purrr,
-    dplyr,
-    stringr
+    dplyr
 RoxygenNote: 6.1.1
