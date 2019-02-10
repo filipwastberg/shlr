@@ -11,14 +11,24 @@ knitr::opts_chunk$set(echo = TRUE)
 
 This is an API client to retrieve data from the Swedish Hockey League Open API. 
 
+You can install the package with `devtools`.
+
+```{r eval=FALSE}
+devtools::install_github("filipwastberg/shlr")
+```
+
 To be able to use it you need to apply for a client id and client secret from http://doc.openapi.shl.se/.
 
-When you have these you can save them as environmentvariables:
+When you have these you can save them as environment variables:
 
 ```{r eval=FALSE}
 Sys.setenv('SHL_CLIENT_ID' = "xxxxxx")
 Sys.setenv('SHL_CLIENT_SECRET' = "xxxxxxxx")
 ```
+
+If you need to repeat this procedure during start up then save them to your `.Renviron` usually done by `file.edit("~/.Renviron")`
+
+## Using the package
 
 For example you can get the top 10 players of a team (or the whole league) using `get_top10_player_stats()`. 
 

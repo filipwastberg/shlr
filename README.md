@@ -4,14 +4,24 @@ shlr
 This is an API client to retrieve data from the Swedish Hockey League
 Open API.
 
+You can install the package with `devtools`.
+
+    devtools::install_github("filipwastberg/shlr")
+
 To be able to use it you need to apply for a client id and client secret
 from
 <a href="http://doc.openapi.shl.se/" class="uri">http://doc.openapi.shl.se/</a>.
 
-When you have these you can save them as environmentvariables:
+When you have these you can save them as environment variables:
 
     Sys.setenv('SHL_CLIENT_ID' = "xxxxxx")
     Sys.setenv('SHL_CLIENT_SECRET' = "xxxxxxxx")
+
+If you need to repeat this procedure during start up then save them to
+your `.Renviron` usually done by `file.edit("~/.Renviron")`
+
+Using the package
+-----------------
 
 For example you can get the top 10 players of a team (or the whole
 league) using `get_top10_player_stats()`.
@@ -39,7 +49,7 @@ league) using `get_top10_player_stats()`.
     ##  8           49 Bobb…    181     80   116 SWE             53         0
     ##  9           40 Jako…    184     89   128 SWE             15         0
     ## 10           42 Axel…    182     73   157 SWE             91         0
-    ## # ... with 15 more variables: position <chr>, team <chr>, toi <int>,
+    ## # … with 15 more variables: position <chr>, team <chr>, toi <int>,
     ## #   toi_gp <chr>, assists <int>, bk_s <int>, goals <int>, gwg <int>,
     ## #   hits <int>, minus <int>, plus <int>, pim <int>, ppg <int>, sog <int>,
     ## #   tp <int>
@@ -64,7 +74,7 @@ You can get all the games for a season with `get_games()`.
     ##  8 HV71                          0 FALSE          8589 Regular … qUv-ZF1A…
     ##  9 RBK                           0 FALSE          8590 Regular … qUv-ZF1A…
     ## 10 LHF                           0 FALSE          8587 Regular … qUv-ZF0O…
-    ## # ... with 354 more rows, and 11 more variables:
+    ## # … with 354 more rows, and 11 more variables:
     ## #   highlights_coverage_enabled <lgl>, home_team_code <chr>,
     ## #   home_team_result <int>, live_coverage_enabled <lgl>, overtime <lgl>,
     ## #   penalty_shots <lgl>, played <lgl>, season <chr>, series <chr>,
@@ -113,6 +123,6 @@ The current standing in SHL:
     ## 12    39    12 ÖRE         -20    97   117         6             6
     ## 13    39    13 MIK         -30    90   120         2             2
     ## 14    38    14 TIK         -38    91   129         2             2
-    ## # ... with 11 more variables: non_reg_t <int>, non_reg_w <int>, otl <int>,
+    ## # … with 11 more variables: non_reg_t <int>, non_reg_w <int>, otl <int>,
     ## #   ott <int>, otw <int>, points <int>, reg_l <int>, reg_t <int>,
     ## #   reg_w <int>, sol <int>, sow <int>
